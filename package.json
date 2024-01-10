@@ -1,0 +1,20 @@
+{
+  "name": "@shakesco/userop",
+  "version": "1.0.0",
+  "description": "Shakesco useroperation package",
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/shakesco/shakesco-userop/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "shakesco",
+    "userop",
+    "ethereum",
+    "polygon",
+    "contract"
+  ],
+  "dependencies": {
+    "ethers": "^6.9.2"
+  }
+}
