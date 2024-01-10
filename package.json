@@ -15,6 +15,7 @@
     "contract"
   ],
   "dependencies": {
+    "@ethersproject/bignumber": "^5.7.0",
     "ethers": "^6.9.2"
   }
 }
