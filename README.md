@@ -34,7 +34,7 @@ const ACCOUNT = new ethers.Contract(sender, smartWalletABI, provider);
 const nonce = await ACCOUNT.getNonce();
 ```
 
->📓NOTE: This assumes you have deployed smart wallet. If not populate nonce with "0x"
+>📓NOTE: This assumes you have deployed smart wallet. If not populate nonce with "0x0"
 
 To get the initcode you need the [_factory_](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccountFactory.sol "Factory") contract. You can create the initcode by simply doing:
 
@@ -62,7 +62,7 @@ const calldata = accountABI.encodeFunctionData("execute",
     ]);
 ```
 
-The above calldata is a simple one requesting the smart wallet to eth to address.
+The above calldata is a simple one requesting the smart wallet to send eth to address.
 
 Now to the gas value:
 
