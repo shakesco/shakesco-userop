@@ -1,4 +1,4 @@
-const { ethers, JsonRpcProvider } = require("ethers");
+const { ethers } = require("ethers");
 const { BigNumber } = require("@ethersproject/bignumber");
 
 /**
@@ -10,10 +10,13 @@ const { BigNumber } = require("@ethersproject/bignumber");
 module.exports.getEIP1559 = async (provider) => {
   const block = await provider.getBlock("latest");
 
-  const maxFeePerGas = `0x${BigNumber.from(block.baseFeePerGas)
-    .add(1e9)
-    .toString()}`;
-  const maxPriorityFeePerGas = `0x${BigNumber.from(1e9).toString()}`;
+  const maxFeePerGas = BigNumber.from(block.baseFeePerGas)
+    .add((await provider.getFeeData()).maxFeePerGas)
+    .toString();
+
+  const maxPriorityFeePerGas = (
+    await provider.getFeeData()
+  ).maxPriorityFeePerGas.toString();
 
   return {
     maxFeePerGas: maxFeePerGas,
@@ -48,16 +51,20 @@ module.exports.useropGasValues = async (
   const initEstimate = initCode
     ? await provider.estimateGas({
         from: "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
-        to: hexDataSlice(initCode, 0, 20),
-        data: hexDataSlice(initCode, 20),
+        to: ethers.dataSlice(initCode, 0, 20),
+        data: ethers.dataSlice(initCode, 20),
         gasLimit: 10e6,
       })
     : "100000";
 
   return {
-    callGasLimit: `0x${BigNumber.from(callGasEstimate).add(55000).toString()}`,
-    preVerificationGas: "0x21000",
-    verificationGasLimit: `0x${initEstimate.toString()}`,
+    callGasLimit: `0x${BigNumber.from(callGasEstimate)
+      .add("50000")
+      .toString()}`,
+    preVerificationGas: BigNumber.from(callGasEstimate).add("0x5208")._hex,
+    verificationGasLimit: initCode
+      ? BigNumber.from(initEstimate).add("100000")._hex
+      : BigNumber.from(initEstimate)._hex,
   };
 };
 

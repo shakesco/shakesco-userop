@@ -75,8 +75,8 @@ Use our package to get the eip 1559 gas value as below:
   const { maxFeePerGas, maxPriorityFeePerGas } = await shakesco.getEIP1559(
     provider
   );
-  console.log(maxFeePerGas); //0x1000000016
-  console.log(maxPriorityFeePerGas); //0x1000000000
+  console.log(maxFeePerGas); //0x1500000016
+  console.log(maxPriorityFeePerGas); //0x1500000000
 ```
 
 To get the other userop gas value:
@@ -90,8 +90,8 @@ To get the other userop gas value:
       initCode
     );
   console.log(callGasLimit); //0x83074
-  console.log(preVerificationGas); //0x21000
-  console.log(verificationGasLimit); //0x100000
+  console.log(preVerificationGas); //0x01228e
+  console.log(verificationGasLimit); //0x0186a0
 ```
 >📓NOTE: If smart wallet deployed pass initcode as empty string. If you also don't want to call any data from the smart wallet pass an empty string.
 
