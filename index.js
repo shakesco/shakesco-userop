@@ -2,8 +2,8 @@ const { ethers } = require("ethers");
 const { BigNumber } = require("@ethersproject/bignumber");
 
 /**
- * @dev This functions returns the maxFeePerGas and maxPriorityFeePerGas
- * @dev Note that this is for networks that support EIP-1559
+ * This functions returns the maxFeePerGas and maxPriorityFeePerGas
+ * Note that this is for networks that support EIP-1559
  * @param {*} provider Your node provider
  * @returns maxFeePerGas and maxPriorityFeePerGas
  */
@@ -25,10 +25,10 @@ module.exports.getEIP1559 = async (provider) => {
 };
 
 /**
- * @dev The following function returns the gas values need by the userop
- * @dev The callGasEstimate does a crude estimation, we add 55000 because estimateGas assumes call from entrypoint
- * @dev verificationGasLimit is hardcoded 100000 if no initcode. With initcode we add create2 cost
- * @dev We hardcode preverification to 21000. Careful with this one, cannot be refunded like verificationGasLimit or callGasLimit.
+ * The following function returns the gas values need by the userop
+ * The callGasEstimate does a crude estimation, we add 55000 because estimateGas assumes call from entrypoint
+ * verificationGasLimit is hardcoded 100000 if no initcode. With initcode we add create2 cost
+ * We hardcode preverification to 21000. Careful with this one, cannot be refunded like verificationGasLimit or callGasLimit.
  * @param {*} sender The smart account address
  * @param {*} provider Your node provider
  * @param {*} calldata The operation you want the smart account to perform. If none leave empty
@@ -69,7 +69,7 @@ module.exports.useropGasValues = async (
 };
 
 /**
- * @dev The following function will return the bytes that need to be signed by the owner of the smart wallet.
+ * The following function will return the bytes that need to be signed by the owner of the smart wallet.
  * @param {*} opsender The smart account address
  * @param {*} nonce The nonce of the smart account
  * @param {*} initCode The initcode of smart account if not already deployed

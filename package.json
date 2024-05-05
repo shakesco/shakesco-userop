@@ -7,6 +7,9 @@
     "url": "https://github.com/shakesco/shakesco-userop/issues"
   },
   "license": "MIT",
+  "scripts": {
+    "doc": "./node_modules/.bin/jsdoc index.js README.md -t ./node_modules/better-docs"
+  },
   "keywords": [
     "shakesco",
     "userop",
@@ -17,5 +20,9 @@
   "dependencies": {
     "@ethersproject/bignumber": "^5.7.0",
     "ethers": "^6.9.2"
+  },
+  "devDependencies": {
+    "better-docs": "^2.7.3",
+    "jsdoc": "^4.0.3"
   }
 }
