@@ -7,9 +7,6 @@
     "url": "https://github.com/shakesco/shakesco-userop/issues"
   },
   "license": "MIT",
-  "scripts": {
-    "doc": "./node_modules/.bin/jsdoc index.js README.md -t ./node_modules/better-docs"
-  },
   "keywords": [
     "shakesco",
     "userop",
